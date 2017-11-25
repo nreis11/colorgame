@@ -5,6 +5,8 @@ var scoreElem = document.querySelector("#score");
 var p = document.createElement('p');
 p.innerHTML = 'Say "START" to replay';
 var correctSound = document.querySelector("#correctSound");
+var timerDisplay = document.querySelector("#timer");
+var countdown;
 var current;
 var guessValue;
 var answerValue;
@@ -23,6 +25,36 @@ const recognition = new SpeechRecognition();
 // If input == text color, add to score
 // Move to next color
 // When color array is empty, game over
+
+function startTimer() {
+  const seconds = 25;
+  timer(seconds);
+}
+
+function timer(seconds) {
+  // clear any existing timers
+  clearInterval(countdown);
+
+  const now = Date.now();
+  const then = now + seconds * 1000;
+  displayTimeLeft(seconds);
+
+  countdown = setInterval(() => {
+    const secondsLeft = Math.round((then - Date.now()) / 1000);
+    // check if we should stop it!
+    if(secondsLeft < 0) {
+      clearInterval(countdown);
+      gameOver();
+      return;
+    }
+    // display it
+    displayTimeLeft(secondsLeft);
+  }, 1000);
+}
+
+function displayTimeLeft(seconds) {
+  timerDisplay.innerHTML = `0:${seconds}`;
+}
 
 function shuffle(a) {
     var j, x, i;
@@ -72,11 +104,14 @@ function nextColor() {
     ctext.style.color = colors[idx + 1];
     idx++
   } else {
-    ctext.style.color = 'black';
-    ctext.innerHTML = "Game Over";
-    ctext.appendChild(p);
-    recognition.stop();
+    gameOver();
   }
+}
+
+function gameOver() {
+  ctext.style.color = 'black';
+  ctext.innerHTML = "Game Over";
+  ctext.appendChild(p);
 }
 
 function reset() {
@@ -84,6 +119,7 @@ function reset() {
   score = 0;
   scoreElem.innerHTML = `Score: ${score}`;
   shuffle(colors);
+  startTimer();
   nextColor();
 }
 
