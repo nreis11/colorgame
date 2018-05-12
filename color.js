@@ -71,7 +71,7 @@ function parseResponse(e) {
   const transcript = Array.from(e.results)
     .map(result => result[0])
     .map(result => result.transcript).join('')
-    .toLowerCase()
+    .toLowerCase();
 
     console.log(transcript);
 
@@ -81,7 +81,7 @@ function parseResponse(e) {
 
     // Only compare if game hasn't started
     if (ctext.innerHTML != 'Say "START" to begin.') {
-      compare(transcript)
+      compare(transcript);
     }
 }
 
@@ -102,7 +102,7 @@ function nextColor() {
     current = colors[idx];
     ctext.innerHTML = current;
     ctext.style.color = colors[idx + 1];
-    idx++
+    idx++;
   } else {
     gameOver();
   }
