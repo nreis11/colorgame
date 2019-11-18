@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Color Speak</title>
+  <head>
+    <title>Color Speak</title>
 
-  <link rel="stylesheet" type="text/css" href="color.css">
-</head>
-<body>
-<div id="main-container">
-  <p id="timer"></p>
-  <h1 id='ctext'>Say "START" to begin.</h1>
+    <link rel="stylesheet" type="text/css" href="color.css" />
+  </head>
+  <body>
+    <div id="main-container">
+      <h1>Text Color Game</h1>
+      <p id="timer"></p>
+      <div id="ctext-container">
+        <h2 id="ctext">Say 'START' to begin.*</h2>
+      </div>
+      <p id="score"></p>
 
-  <p id='score'></p>
+      <div id="instructions-container">
+        <p><b>Instructions</b></p>
+        <p>
+          Say the <b><i>color</i></b> of the text that appears, not what it
+          reads.
+        </p>
+        <p>You have 25 seconds to compelete the challenge.</p>
+      </div>
+      <div id="notes">
+        <p>
+          *This game requires the microphone to play. Please allow the
+          microphone to be used if prompted.
+        </p>
+      </div>
+    </div>
 
-  <p><b>Instructions</b></p>
-  <p>Say the <b><i>color</i></b> of the text that appears, not what it reads.</p>
-  <p>You have 25 seconds to compelete the challenge.</p>
-</div>
+    <audio id="correctSound">
+      <source src="media/correct.mp3" />
+    </audio>
+    <audio id="buzzer">
+      <source src="media/buzzer.mp3" />
+    </audio>
 
-<audio id="correctSound">
-  <source src="media/correct.mp3">
-</audio>
-
-<script src="color.js"></script>
-</body>
+    <script src="color.js"></script>
+  </body>
 </html>

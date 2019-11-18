@@ -8,35 +8,64 @@ header {
   padding: 2px;
   border: 2px solid black;
   background: orange; /* For browsers that do not support gradients */
-  background: linear-gradient(to bottom right, orange, yellow); /* Standard syntax */
-  box-shadow:10px 10px 0 rgba(0,0,0,0.1);
+  background: linear-gradient(
+    to bottom right,
+    orange,
+    yellow
+  ); /* Standard syntax */
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
   text-transform: capitalize;
 }
 
 #ctext {
-  font-size: 3em;
+  font-size: 2em;
   text-align: center;
 }
 
-#timer, #score {
+#timer,
+#score {
   text-align: center;
+  font-weight: bold;
 }
 
 body {
-  background:#ffc600;
-  font-family: 'helvetica neue';
+  background: #ffc600;
+  font-family: "helvetica neue";
   font-weight: 200;
   font-size: 20px;
 }
 
 #main-container {
-  max-width:75%;
-  margin:50px auto;
-  background:white;
-  border-radius:5px;
-  box-shadow:10px 10px 0 rgba(0,0,0,0.1);
-  padding:1rem 2rem 1rem 2rem;
-  background: -webkit-gradient(linear, 0 0, 0 100%, from(#d9eaf3), color-stop(4%, #fff)) 0 4px;
+  width: 75%;
+  height: 50%;
+  margin: 50px auto;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  background: -webkit-gradient(
+      linear,
+      0 0,
+      0 100%,
+      from(#d9eaf3),
+      color-stop(4%, #fff)
+    )
+    0 4px;
   background-size: 100% 3rem;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+#ctext-container {
+  width: 50%;
+  height: 200px;
+  padding: 10px;
+}
+
+#notes {
+  font-size: 0.75rem;
+  align-self: flex-start;
 }
