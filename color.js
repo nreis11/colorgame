@@ -143,5 +143,5 @@ recognition.start();
 
 recognition.addEventListener("result", parseResponse);
 recognition.addEventListener("end", recognition.start);
-ctext.addEventListener("click", reset);
 window.addEventListener("keydown", handleKeydown);
+startButton.addEventListener("click", reset);
