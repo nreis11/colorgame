@@ -15,7 +15,8 @@ var ctextContainer = document.getElementById("ctext");
 var scoreElem = document.querySelector("#score");
 var correctSound = document.querySelector("#correctSound");
 var buzzer = document.querySelector("#buzzer");
-var timerDisplay = document.querySelector("#timer");
+var timer = document.querySelector("#timer");
+var startButton = document.getElementById("start-btn");
 var isRunning = false;
 var countdown;
 var guessValue;
@@ -40,10 +41,10 @@ const recognition = new SpeechRecognition();
 
 function startTimer() {
   const seconds = 3;
-  timer(seconds);
+  setTimer(seconds);
 }
 
-function timer(seconds) {
+function setTimer(seconds) {
   // clear any existing timers
   clearInterval(countdown);
 
@@ -61,7 +62,7 @@ function timer(seconds) {
 }
 
 function displayTimeLeft(seconds) {
-  timerDisplay.innerHTML = seconds.toString();
+  timer.innerHTML = seconds.toString();
 }
 
 function shuffle(a) {
@@ -115,8 +116,10 @@ function nextColor() {
 function gameOver() {
   clearInterval(countdown);
   buzzer.play();
+  timer.innerHTML = "Game Over";
   ctext.style.color = "black";
-  ctext.innerHTML = "Game Over<br />Say 'START' to replay";
+  ctext.innerHTML = "";
+  ctextContainer.appendChild(startButton);
   isRunning = false;
 }
 
@@ -130,8 +133,15 @@ function reset() {
   nextColor();
 }
 
+function handleKeydown(e) {
+  if (e.keyCode === 32) {
+    startButton.click();
+  }
+}
+
 recognition.start();
 
 recognition.addEventListener("result", parseResponse);
 recognition.addEventListener("end", recognition.start);
 ctext.addEventListener("click", reset);
+window.addEventListener("keydown", handleKeydown);
