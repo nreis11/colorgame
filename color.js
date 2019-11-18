@@ -40,7 +40,7 @@ const recognition = new SpeechRecognition();
 // When color array is empty, game over
 
 function startTimer() {
-  const seconds = 3;
+  const seconds = 25;
   setTimer(seconds);
 }
 
