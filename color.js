@@ -134,7 +134,7 @@ function reset() {
 }
 
 function handleKeydown(e) {
-  if (e.keyCode === 32) {
+  if (!isRunning && e.keyCode === 32) {
     startButton.click();
   }
 }
